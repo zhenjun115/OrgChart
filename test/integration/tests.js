@@ -109,13 +109,13 @@ describe('orgchart -- integration tests', function () {
 
   describe('addChildren()', function () {
     it('Add child nodes to the leaf node', function () {
-      oc.addChildren($bomiao, { 'children': [{'name': 'Li Xin', 'id': 'n11' }] });
+      oc.addChildren($bomiao, [{'name': 'Li Xin', 'id': 'n11' }]);
       $bomiao.closest('tr').siblings().should.lengthOf(3);
       $bomiao.closest('tr').siblings('.nodes').find('.node').attr('id').should.equal('n11');
     });
 
     it('Add child nodes to the un-leaf node', function () {
-      oc.addChildren($sumiao, { 'children': [{'name': 'Li Xin', 'id': 'n11' }] });
+      oc.addChildren($sumiao, [{'name': 'Li Xin', 'id': 'n11' }]);
       $sumiao.closest('tr').siblings('.nodes').children().should.lengthOf(4);
       $sumiao.closest('tr').siblings('.nodes').children(':last').find('.node').attr('id').should.equal('n11');
     });
@@ -123,7 +123,7 @@ describe('orgchart -- integration tests', function () {
 
   describe('addSiblings()', function () {
     it('Just add sibling nodes', function () {
-      oc.addSiblings($sumiao, { 'siblings': [{'name': 'Li Xin', 'id': 'n11' }] });
+      oc.addSiblings($sumiao, [{'name': 'Li Xin', 'id': 'n11' }]);
       $laolao.closest('tr').siblings('.nodes').children().should.lengthOf(4);
       $laolao.closest('tr').siblings('.nodes').children(':last').find('.node').attr('id').should.equal('n11');
     });
